@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "nom": "JavaScript",
+        "image": "/images/js.png"
+    },
+    {
+        "id": 2,
+        "nom": "React Js",
+        "image": "/images/react js.png"
+    },
+    {
+        "id": 3,
+        "nom": "Next Js",
+        "image": "/images/Next js.png"
+    },
+    {
+        "id": 4,
+        "nom": "Angular Js",
+        "image": "/images/angular.png"
+    }
+]

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --background: #ffffff;
+  --foreground: #020013;
+  --blancD9: #d9d9d93b;
+  --gris6b: #6B6262;
+  --gridad: #ADADAD;
+  --violet: #7066C1;
+  --violetHover: #161337;
+  --violetFoncer: #;
+  --vert: #08AD26;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020013;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Archivo, sans-serif;
+  /* -webkit-user-select: none;
+  user-select: none; */
+}
+
+pre {
+  background-color: transparent !important;
+}
