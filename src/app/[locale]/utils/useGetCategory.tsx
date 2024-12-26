@@ -12,7 +12,7 @@ const UseGetCategory = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${apiUrl}/data/category.json`);
+                const response = await fetch(`/data/category.json`);
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
                 setCategorys(data);

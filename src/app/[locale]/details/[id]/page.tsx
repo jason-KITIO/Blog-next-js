@@ -36,7 +36,7 @@ const PostDetails = () => {
         if (id) {
             const fetchPost = async () => {
                 try {
-                    const response = await fetch(`${apiUrl}/data/post.json`);
+                    const response = await fetch(`/data/post.json`);
                     if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                     const data: IPOST[] = await response.json();
                     const foundPost = data.find(item => item.id === Number(id));
