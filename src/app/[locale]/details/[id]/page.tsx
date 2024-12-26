@@ -12,7 +12,6 @@ import ReadingTime from '../../components/ReadingTime';
 import ViewCounter from "../../components/ViewCounter";
 // import UseGetCategory from "../../utils/useGetCategory";
 import Category from "../../components/category";
-import apiUrl from "../../../../../config";
 
 // interface Post {
 //     id: number;

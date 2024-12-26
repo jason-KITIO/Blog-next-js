@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { ICategory } from "../interface/interface";
-import apiUrl from '../../../../config';
 
 const UseGetCategory = () => {
 
