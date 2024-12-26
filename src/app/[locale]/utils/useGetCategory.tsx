@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ICategory } from "../interface/interface";
-import apiUrl from '../../../../config'; 
+import apiUrl from '../../../../config';
 
 const UseGetCategory = () => {
 
@@ -12,7 +12,7 @@ const UseGetCategory = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/data/category.json');
+                const response = await fetch(`${apiUrl}/data/category.json`);
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
                 setCategorys(data);
