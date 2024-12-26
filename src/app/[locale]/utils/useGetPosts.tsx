@@ -4,7 +4,7 @@ import { IPOST } from "../interface/interface";
 const UseGetPost = () => {
 
     const [posts, setPosts] = useState<IPOST[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    // const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
 
@@ -15,17 +15,20 @@ const UseGetPost = () => {
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
                 setPosts(data);
-            } catch (error: any) {
-                setError(error.message);
-            } finally {
-                setLoading(false);
+            } catch (error: unknown) {
+                if (error instanceof Error) {
+                    setError(error.message);
+                } else {
+                    setError("Une erreur inconnue s'est produite.");
+                }
             }
+
         };
 
         fetchData();
     }, []);
 
-    return {posts, error};
+    return { posts, error };
 }
 
 export default UseGetPost;

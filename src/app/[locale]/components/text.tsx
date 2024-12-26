@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 // export interface IModal {
@@ -68,8 +68,7 @@ export interface ICustomButtonProps {
 //     )
 // }
 
-const ModalBox = ({ title, description, open = false, type, image, onClose }: IModalProps) => {
-    const [isOpen, setIsOPen] = useState<boolean>(open);
+const ModalBox = ({ title, description, type, image, onClose }: IModalProps) => {
     const CustomButton = () => {
         return (
             <div>

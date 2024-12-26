@@ -1,5 +1,3 @@
-import { on } from "events";
-import { ReactNode } from "react";
 
 interface Itoast {
     title: string;
@@ -10,10 +8,9 @@ interface Itoast {
     onClose: () => void;
 }
 
-export const Toast: React.FC <Itoast>=({title, description, close, position, onClose, type})=>{
+export const Toast: React.FC <Itoast>=({title, description, onClose, type})=>{
     const CustomButton = () =>{
         return(
-
             <div>
                { type== "danger" && <button> X</button>
                }

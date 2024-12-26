@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import * as shiki from "shiki";
 import { codeToHtml } from 'shiki'
 import CopieString from "./copy";
 

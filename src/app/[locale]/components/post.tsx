@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { IPOST } from '../interface/interface';
 
-const Post: React.FC<IPOST> = ({ id, DateCreation, Titre, SousTitre, image, tempsLecture }) => {
+const Post: React.FC<IPOST> = ({ id, DateCreation, Titre, SousTitre, tempsLecture }) => {
     const router = useRouter();
     const [locale, setLocale] = useState<string | null>(null);
 

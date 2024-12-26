@@ -1,4 +1,3 @@
-// components/MyComponent.tsx
 import React, { useState } from 'react';
 import Image from 'next/image';
 
@@ -8,7 +7,7 @@ interface IFooterLienProps {
     image: string;
 }
 
-const footerLienX = ({ texte, lien, image }: IFooterLienProps) => {
+const FooterLien = ({ texte, lien, image }: IFooterLienProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -37,4 +36,4 @@ const footerLienX = ({ texte, lien, image }: IFooterLienProps) => {
     );
 };
 
-export default footerLienX;
+export default FooterLien;

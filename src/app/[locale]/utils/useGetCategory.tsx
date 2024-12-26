@@ -4,7 +4,7 @@ import { ICategory } from "../interface/interface";
 const UseGetCategory = () => {
 
     const [categorys, setCategorys] = useState<ICategory[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    // const [loading, setLoading] = useState<boolean>(true);
     const [error_Category, setError_Category] = useState<string | null>(null);
 
 
@@ -15,17 +15,20 @@ const UseGetCategory = () => {
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
                 setCategorys(data);
-            } catch (error_Category: any) {
-                setError_Category(error_Category.message);
-            } finally {
-                setLoading(false);
+            } catch (error_Category: unknown) {
+                if (error_Category instanceof Error) {
+                    setError_Category(error_Category.message);
+                } else {
+                    setError_Category("Une erreur inconnue s'est produite.");
+                }
             }
+
         };
 
         fetchData();
     }, []);
 
-    return {categorys, error_Category};
+    return { categorys, error_Category };
 }
 
 export default UseGetCategory;

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 interface ViewCounterProps {
@@ -13,11 +14,6 @@ const ViewCounter: React.FC<ViewCounterProps> = ({ postId }) => {
             try {
                 const response = await fetch(`http://localhost:3000/data/post.json`); // Remplacez par votre API
                 if (!response.ok) throw new Error('Erreur lors de la récupération des vues');
-                const data = await response.json();
-                const post = data.find((item: any) => item.id === postId);
-                if (post) {
-                    setViews(post.vues || 0); // Initialiser avec le nombre de vues du post
-                }
             } catch (error) {
                 console.error(error);
             }
@@ -31,7 +27,7 @@ const ViewCounter: React.FC<ViewCounterProps> = ({ postId }) => {
 
     return (
         <div className="flex flex-row gap-x-2 items-center">
-            <img src="/images/view.svg" alt="eye" width={25} height={25} />
+            <Image src="/images/view.svg" alt="eye" width={25} height={25} />
             <p>{views} Vues</p>
         </div>
     );

@@ -7,7 +7,6 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -36,18 +35,22 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: {locale}
+  params
 }: {
   children: React.ReactNode;
-  params: {locale: string};
+  params: Promise<{ locale: string }>; // Modification ici
 }) {
+  
+  // Résoudre la promesse pour obtenir les paramètres
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale;
+
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
- 
-  // Providing all messages to the client
-  // side is the easiest way to get started
+  
+  // Providing all messages to the client side is the easiest way to get started
   const messages = await getMessages();
  
   return (

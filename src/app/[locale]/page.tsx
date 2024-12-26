@@ -3,16 +3,12 @@
 import Image from "next/image";
 import NavBar from './components/navbar'
 import Post from "./components/post";
-import React, { use, useEffect, useState } from "react";
-import { IPOST } from "./interface/interface";
-import ModalBox from "./components/text";
-import { Toast } from "./components/test";
+import React from "react";
 import Category from "./components/category";
 import UseGetPost from "./utils/useGetPosts";
 import UseGetCategory from "./utils/useGetCategory";
 
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
 import Footer from "./components/footer";
 // import { useI18n } from './utils/useTranslations';
 
@@ -20,14 +16,9 @@ const Home: React.FC = () => {
 
   const t = useTranslations('HomePage');
 
-  const [open, setOpen] = useState<boolean>(false)
+  // const [open, setOpen] = useState<boolean>(false)
   const { posts, error } = UseGetPost();
-  const { categorys, error_Category } = UseGetCategory();
-
-
-  const handleClose = () => {
-    setOpen(!open);
-  }
+  const { categorys } = UseGetCategory();
 
   if (error) return (
     <div className="flex justify-center items-center content-center h-[100vh]">
@@ -135,12 +126,12 @@ const Home: React.FC = () => {
               />
               <p>S’inscrire  a  Melria Newsletter</p>
             </div>
-            <p>👉 Inscris-toi maintenant et prends une longueur d'avance dans l'univers du web !</p>
+            <p>{"👉 Inscris-toi maintenant et prends une longueur d'avance dans l'univers du web !"}</p>
           </div>
           <div className="w-6/12">
             <div className="border border-gridad flex flex-row p-2 rounded-xl">
               <input type="text" placeholder="Entrez votre  email" className="border-none bg-transparent outline-none rounded-xl w-full" />
-              <input type="button" className="bg-transparent rounded-xl p-2 border border-gridad cursor-pointer" value={'S’inscrire'} />
+              <input type="button" className="bg-transparent rounded-xl p-2 border border-gridad cursor-pointer" value={"S'inscrire"} />
             </div>
             <p className="text-xs font-light">Unsubscribe at any time. Read our <span className="text-violet">privacy policy.</span></p>
           </div>

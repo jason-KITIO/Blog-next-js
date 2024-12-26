@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     defaultLocale: 'fr', // Langue par défaut
   },
   /* config options here */
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;

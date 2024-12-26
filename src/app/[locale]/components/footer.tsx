@@ -1,4 +1,3 @@
-import Image from "next/image";
 import FooterLien from "./footerLien";
 
 export default function Footer() {

@@ -10,17 +10,17 @@ import Link from "next/link";
 import Footer from "../../components/footer";
 import ReadingTime from '../../components/ReadingTime';
 import ViewCounter from "../../components/ViewCounter";
-import UseGetCategory from "../../utils/useGetCategory";
+// import UseGetCategory from "../../utils/useGetCategory";
 import Category from "../../components/category";
 
-interface Post {
-    id: number;
-    DateCreation: string;
-    Titre: string;
-    description: string;
-    image: string;
-    tempsLecture: number;
-}
+// interface Post {
+//     id: number;
+//     DateCreation: string;
+//     Titre: string;
+//     description: string;
+//     image: string;
+//     tempsLecture: number;
+// }
 
 const PostDetails = () => {
     const router = useRouter();
@@ -28,8 +28,8 @@ const PostDetails = () => {
     const { id } = params; // Récupérer l'ID de l'URL
     const [post, setPost] = useState<IPOST | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const { categorys, error_Category } = UseGetCategory();
+    // const [loading, setLoading] = useState<boolean>(true);
+    // const { categorys, error_Category } = UseGetCategory();
 
     useEffect(() => {
         if (id) {
@@ -41,10 +41,12 @@ const PostDetails = () => {
                     const foundPost = data.find(item => item.id === Number(id));
                     if (!foundPost) throw new Error('Post non trouvé');
                     setPost(foundPost);
-                } catch (error: any) {
-                    setError(error.message);
-                } finally {
-                    setLoading(false);
+                } catch (error: unknown) {
+                    if (error instanceof Error) {
+                        setError(error.message);
+                    } else {
+                        setError("Une erreur inconnue s'est produite.");
+                    }
                 }
             };
 
@@ -162,9 +164,9 @@ function HelloWorld() {
  export default HelloWorld;`} />
                             </div>
                             <div className="flex flex-col gap-4" id="4">
-                                <p className="text-2xl">4. Ajouter des propriétés (props)</p>
-                                <p className="text-gridad text-lg">Les props (propriétés) permettent de passer des données d'un composant parent à un composant enfant. Cela rend les composants dynamiques et réutilisables.</p>
-                                <Bash langage='bash' code={`function ShoppingList(props) {
+                                <p className="text-2xl">{"4. Ajouter des propriétés (props)"}</p>
+                                <p className="text-gridad text-lg">{"Les props (propriétés) permettent de passer des données d'un composant parent à un composant enfant. Cela rend les composants dynamiques et réutilisables."}</p>
+                                <Bash langage="bash" code={`function ShoppingList(props) {
     return (
         <div>
             <h1>Liste de courses pour {props.name}</h1>
