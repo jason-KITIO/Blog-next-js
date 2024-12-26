@@ -1,14 +1,18 @@
 {
   "name": "blog",
   "version": "0.1.0",
+  "homepage": "https://jason-KITIO.github.io/blog",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "next build && gh-pages -d .next",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "gh-pages": "^6.2.0",
     "next": "15.1.0",
     "next-i18n-router": "^5.5.1",
     "next-intl": "^3.26.3",

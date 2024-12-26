@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface IFooterLienProps {
     texte: string;
@@ -23,14 +24,14 @@ const FooterLien = ({ texte, lien, image }: IFooterLienProps) => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <a href={lien}>
+                <Link href={lien}>
                     <Image
                         src={image}
                         alt="twitter"
                         width={24}
                         height={24}
                     />
-                </a>
+                </Link>
             </div>
         </div>
     );

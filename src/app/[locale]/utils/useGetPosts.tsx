@@ -11,7 +11,7 @@ const UseGetPost = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/data/post.json');
+                const response = await fetch('https://blog-next-js-steel-delta.vercel.app/data/post.json');
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
                 setPosts(data);
