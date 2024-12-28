@@ -4,7 +4,7 @@ export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}", 
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -27,6 +27,8 @@ export default {
         btnRed: "#B23535",
         btnYellow: "#F9D405",
         btnGreen: "#00A400",
+
+        bgLogin: "#060416",
       },
       fontFamily: {
         inter: ['var(--font-inter)', 'sans-serif'],
