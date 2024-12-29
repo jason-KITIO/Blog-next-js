@@ -2,21 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { IPOST } from '../interface/interface';
+import useLocale from "../utils/useLocal";
 
 const Post: React.FC<IPOST> = ({ id, DateCreation, Titre, SousTitre, tempsLecture }) => {
     const router = useRouter();
-    const [locale, setLocale] = useState<string | null>(null);
-
-    useEffect(() => {
-        // Vérifiez si window est défini avant d'accéder à son contenu
-        if (typeof window !== 'undefined') {
-            const currentPath = window.location.pathname; // ou utiliser usePathname() si disponible
-            const extractedLocale = currentPath.split('/')[1]; // Supposons que le format soit /[locale]/details/[id]
-            setLocale(extractedLocale);
-        }
-    }, []);
+    const locale = useLocale();
 
     return (
         <div

@@ -1,9 +1,9 @@
 "use client"
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { useLocale } from "next-intl";
+import useLocale from "../utils/useLocal";
 
 interface Slide {
     image: string;
@@ -29,19 +29,10 @@ const slides: Slide[] = [
     }
 ];
 
-const login = () => {
+const Login = () => {
 
     const router = useRouter();
-    const [locale, setLocale] = useState<string | null>(null);
-
-    useEffect(() => {
-        // Vérifiez si window est défini avant d'accéder à son contenu
-        if (typeof window !== 'undefined') {
-            const currentPath = window.location.pathname; // ou utiliser usePathname() si disponible
-            const extractedLocale = currentPath.split('/')[1]; // Supposons que le format soit /[locale]/details/[id]
-            setLocale(extractedLocale);
-        }
-    }, []);
+    const locale = useLocale();
 
     const [showInputPassword, setShowInputPassword] = useState<boolean>(false);
     const [email, setEmail] = useState<string>("");
@@ -52,7 +43,9 @@ const login = () => {
         console.log('email', email)
         console.log('password', password)
 
-        locale && router.push(`/${locale}/dashboard/home/`)
+        if (locale) {
+            router.push(`/${locale}/dashboard/home/`);
+        }
     }
 
 
@@ -164,4 +157,4 @@ const login = () => {
     );
 }
 
-export default login;
+export default Login;

@@ -10,26 +10,14 @@ import Link from "next/link";
 import Footer from "../../components/footer";
 import ReadingTime from '../../components/ReadingTime';
 import ViewCounter from "../../components/ViewCounter";
-// import UseGetCategory from "../../utils/useGetCategory";
 import Category from "../../components/category";
-
-// interface Post {
-//     id: number;
-//     DateCreation: string;
-//     Titre: string;
-//     description: string;
-//     image: string;
-//     tempsLecture: number;
-// }
 
 const PostDetails = () => {
     const router = useRouter();
     const params = useParams();
-    const { id } = params; // Récupérer l'ID de l'URL
+    const { id } = params; 
     const [post, setPost] = useState<IPOST | null>(null);
     const [error, setError] = useState<string | null>(null);
-    // const [loading, setLoading] = useState<boolean>(true);
-    // const { categorys, error_Category } = UseGetCategory();
 
     useEffect(() => {
         if (id) {
