@@ -1,0 +1,83 @@
+generator client {
+provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url = env("DATABASE_URL")
+}
+
+model Author {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  pseudo       String
+  email        String     @unique
+  password     String
+  links        SocialLinks?
+  postCreated  Post       @relation(fields: [postID], references: [id])
+  postID       String     @db.ObjectId 
+}
+
+
+model Post{
+   id           String    @id @default(auto()) @map("_id") @db.ObjectId
+   title        String 
+   content      String
+   createdAt    DateTime  @default(now())
+   updatedAt    DateTime  @updatedAt
+   status       StatusValue?
+   Author       Author[]
+   Comment      Comment[]
+   tagID        String     @db.ObjectId
+   tag          Tag[]      @relation(fields: [categoryID], references: [id])
+   imageID      String     @db.ObjectId
+   image        Image[]    @relation(fields: [categoryID], references: [id])
+   categoryID   String[]   @db.ObjectId
+   category     Category[] @relation(fields: [categoryID], references: [id])
+}
+
+model Comment {
+    id           String    @id @default(auto()) @map("_id") @db.ObjectId
+    message      String
+    createdAt    DateTime  @default(now())
+    updatedAt    DateTime  @updatedAt
+    authorName   String
+    authorEmail  String
+    concernedPost Post?    @relation(fields: [postID], references: [id])
+    postID        String   @db.ObjectId  
+}
+
+model Tag{
+    id           String     @id @default(auto()) @map("_id") @db.ObjectId
+    tagName      String      
+    slug         String
+    postID       String[]   @db.ObjectId
+    post         Post[]     @relation(fields: [postID], references: [id])
+}
+
+model Image{
+    id          String      @id @default(auto()) @map("_id") @db.ObjectId
+    url         String      @unique
+    postID      String[]    @db.ObjectId
+    post        Post[]      @relation(fields: [postID], references: [id])
+    Category    Category[]
+}
+
+model Category{
+    id           String     @id @default(auto()) @map("_id") @db.ObjectId
+    categoryName String
+    urlImage     Image      @relation(fields: [imageID], references: [id])
+    imageID      String     @db.ObjectId
+    postID       String[]   @db.ObjectId
+    post         Post[]     @relation(fields: [postID], references: [id])
+}
+
+enum SocialLinks {
+    github
+    linkedin
+    x
+}
+
+enum StatusValue {
+    publish
+    draft
+}
