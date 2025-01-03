@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,40 +10,88 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        blancD9: "var(--blancD9)",
-        gris6b: "var(--gris6b)",
-        gridad: "var(--gridad)",
-        violet: "var(--violet)",
-        violetHover: "var(--violetHover)",
-
-        bgNewsLetter: "#050318",
-        bgHoverCategorie: "#050218",
-        violetFoncer: "#AB10B3",
-        vert: "#08AD26",
-
-        bgBash: "#1B1646",
-        bgTopBash: "#484343",
-        btnRed: "#B23535",
-        btnYellow: "#F9D405",
-        btnGreen: "#00A400",
-
-        bgLogin: "#060416",
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        blancD9: 'var(--blancD9)',
+        gris6b: 'var(--gris6b)',
+        gridad: 'var(--gridad)',
+        violet: 'var(--violet)',
+        violetHover: 'var(--violetHover)',
+        bgNewsLetter: '#050318',
+        bgHoverCategorie: '#050218',
+        violetFoncer: '#AB10B3',
+        vert: '#08AD26',
+        bgBash: '#1B1646',
+        bgTopBash: '#484343',
+        btnRed: '#B23535',
+        btnYellow: '#F9D405',
+        btnGreen: '#00A400',
+        bgLogin: '#060416',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))'
+        }
       },
       fontFamily: {
-        inter: ['var(--font-inter)', 'sans-serif'],
-        archivo: ['var(--font-archivo)', 'sans-serif'],
-        archivoBlack: ['var(--font-archivoBlack)'],
-        alexandria: ['var(--font-alexandria)'],
+        inter: [
+          'var(--font-inter)',
+          'sans-serif'
+        ],
+        archivo: [
+          'var(--font-archivo)',
+          'sans-serif'
+        ],
+        archivoBlack: [
+          'var(--font-archivoBlack)'
+        ],
+        alexandria: [
+          'var(--font-alexandria)'
+        ]
       },
       backgroundImage: {
-        'Intersect': "url('/images/Intersect.svg')",
+        Intersect: "url('/images/Intersect.svg')",
       },
       borderRadius: {
-        'footer': '0px 0px 150px 150px', // Ajoutez votre valeur personnalisée ici
-      },
-    },
+        footer: '0px 0px 150px 150px',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
+      }
+    }
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

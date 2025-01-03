@@ -27,7 +27,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-violetHover">
-
       <main className="px-20 py-10 pb-16 flex flex-col items-center bg-background rounded-footer">
         <div className="absolute w-[192px] h-[1129.52px] left-[0px] top-[-500.08px] bg-gradient-to-b from-[#E3FAFF] to-transparent opacity-30 blur-[40px] rotate-[-54.38deg]">
         </div>

@@ -11,13 +11,21 @@ import Footer from "../../components/footer";
 import ReadingTime from '../../components/ReadingTime';
 import ViewCounter from "../../components/ViewCounter";
 import Category from "../../components/category";
+import Markdown from "../../components/markdown";
 
 const PostDetails = () => {
     const router = useRouter();
     const params = useParams();
-    const { id } = params; 
+    const { id } = params;
     const [post, setPost] = useState<IPOST | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [commentaires, setCommentaires] = useState<string | null>(null);
+    const [description, setDescription] = useState<string>('');
+    
+    setCommentaires('Aucun commentaire pour le moment.');
+    const handleDescription = (context: string) => {
+        setDescription(context)
+    }
 
     useEffect(() => {
         if (id) {
@@ -105,7 +113,6 @@ const PostDetails = () => {
                                 <p>30  Vues</p> */}
 
                                 <ViewCounter postId={post.id} />
-
                             </div>
                         </div>
                         <Image
@@ -191,6 +198,25 @@ function HelloWorld() {
                         <p className="text-gridad font-alexandria"><Link href="#3" className="hover:underline hover:underline-offset-4">3. Créer un composant de base</Link></p>
                         <p className="text-gridad font-alexandria"><Link href="#4" className="hover:underline hover:underline-offset-4">4. Ajouter des propriétés (props)</Link></p>
                         <p className="text-gridad font-alexandria"><Link href="#5" className="hover:underline hover:underline-offset-4">5. Conclusion et ressources supplémentaires</Link></p>
+                        <p className="text-gridad font-alexandria text-xl"><Link href="#commentaires" className="hover:underline hover:underline-offset-4">Commentaires</Link></p>
+                    </div>
+                </div>
+
+                <div className="flex w-10/12" id="commentaires">
+                    <div className="flex flex-col gap-6 w-8/12 pt-10">
+                        <h2 className="text-2xl font-Archivo">Commentaires</h2>
+                        {
+                            commentaires ? <p>{commentaires}</p> : <p>Aucun commentaire pour le moment.</p>
+                        }
+                        <h2 className="text-2xl font-Archivo">Ajouter un commentaire</h2>
+                        <div className="flex flex-col gap-4">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Entrer votre nom" className="bg-bgLogin outline-none text-lg w-full p-4 px-5 border border-gris6b rounded-lg" />
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <label htmlFor="name">Name</label>
+                            <Markdown description={description} onChange={handleDescription} />
+                        </div>
                     </div>
                 </div>
             </main>

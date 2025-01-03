@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import Image from "next/image";
 import { useRouter } from 'next/navigation'
+import ModeToggle from "./ModeToggle";
 
 const NavBar: React.FC = () => {
 
@@ -17,7 +18,7 @@ const NavBar: React.FC = () => {
     return (
         <nav className="flex justify-between w-full" >
             <h2 className="font-archivoBlack">Melria</h2>
-            <ul className="flex flex-rox gap-8 ">
+            <ul className="flex flex-rox gap-8">
                 <li className="font-inter cursor-pointer" onClick={() => handleVisible()}>
                     {
                         isVisible
@@ -65,7 +66,7 @@ const NavBar: React.FC = () => {
                 <li className="font-inter cursor-pointer" onClick={() => router.push(`/fr`)}>PostsFR</li>
                 <li className="font-inter cursor-pointer" onClick={() => router.push(`/en`)}>PostsEN</li>
             </ul>
-
+            <ModeToggle />
         </nav>
     )
 }
