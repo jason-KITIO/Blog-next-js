@@ -21,10 +21,11 @@ const PostDetails = () => {
     const [error, setError] = useState<string | null>(null);
     const [commentaires, setCommentaires] = useState<string | null>(null);
     const [description, setDescription] = useState<string>('');
-    
-    setCommentaires('Aucun commentaire pour le moment.');
+
+
     const handleDescription = (context: string) => {
         setDescription(context)
+        setCommentaires('Commentaire en cours de rédaction...');
     }
 
     useEffect(() => {
