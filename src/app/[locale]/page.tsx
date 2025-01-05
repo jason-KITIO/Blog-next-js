@@ -26,7 +26,7 @@ const Home: React.FC = () => {
     </div>);
 
   return (
-    <div className="bg-violetHover">
+    <div className="bg-violetHover h-screen overflow-y-auto custom-scroll">
       <main className="px-20 py-10 pb-16 flex flex-col items-center bg-background rounded-footer">
         <div className="absolute w-[192px] h-[1129.52px] left-[0px] top-[-500.08px] bg-gradient-to-b from-[#E3FAFF] to-transparent opacity-30 blur-[40px] rotate-[-54.38deg]">
         </div>
@@ -57,6 +57,7 @@ const Home: React.FC = () => {
                   image={post.image}
                   tempsLecture={post.tempsLecture}
                   content=""
+                  statut="Publish"
                 />
               ))}
               <p className="text-2xl font-bold">Posts populaires</p>
@@ -68,6 +69,7 @@ const Home: React.FC = () => {
                 image="/images/direction-right.svg"
                 tempsLecture={8}
                 content=""
+                statut="Publish"
               />
               <Post
                 id={1}
@@ -77,6 +79,7 @@ const Home: React.FC = () => {
                 image="/images/direction-right.svg"
                 tempsLecture={8}
                 content=""
+                statut="Publish"
               />
             </div>
           </div>

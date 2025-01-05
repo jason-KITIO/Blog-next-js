@@ -39,13 +39,14 @@ const Markdown = ({ description, onChange }: IMarkdownProps) => {
         onUpdate({ editor }) {
             onChange(editor.getHTML())
             console.log(editor.getHTML())
-        }
+        },
+        immediatelyRender: false
     })
 
     return (
         <div className="flex flex-col justify-stretch bg-bgLogin text-lg w-full pb-4 pt-1 border border-gris6b rounded-lg">
             <Toolbar editor={editor} />
-            <EditorContent editor={editor} className='border-t-2 border-gris6b outline-none tiptap p-2' />
+            <EditorContent editor={editor} className='border-t-2 border-gris6b outline-none tiptap p-2 overflow-y-auto h-[200px] custom-scroll' />
         </div>
     );
 };

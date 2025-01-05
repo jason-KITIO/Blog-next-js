@@ -1,4 +1,8 @@
 import Image from "next/image";
+import { useState } from "react";
+import LogoutPopup from "../pages/Logout";
+import { useRouter } from 'next/navigation';
+import useLocale from "../../utils/useLocal";
 
 interface ISlideBareProps {
     activeSection: string;
@@ -6,6 +10,17 @@ interface ISlideBareProps {
 }
 
 const Sidebar = ({ setActiveSection, activeSection }: ISlideBareProps) => {
+    const router = useRouter();
+    const locale = useLocale();
+
+    const [showLogoutPopup, setShowLogoutPopup] = useState(false); // État pour gérer l'affichage du popup
+
+    const handleLogout = () => {
+        console.log("Déconnecté !");
+        router.push(`/${locale}/dashboard`)
+        setShowLogoutPopup(false); // Fermer le popup après la déconnexion
+    };
+
     return (
         <div className="w-64 h-screen text-white p-5 flex flex-col justify-between">
             <div className="flex flex-col gap-4">
@@ -17,19 +32,19 @@ const Sidebar = ({ setActiveSection, activeSection }: ISlideBareProps) => {
                 <ul className="flex flex-col gap-[10px]">
                     <li
                         onClick={() => setActiveSection('home')}
-                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg  ${activeSection === 'home' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
+                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg cursor-pointer  ${activeSection === 'home' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
                         <Image src="/Images/home 04.svg" alt="logo" width={25} height={25} />
                         Home
                     </li>
                     <li
                         onClick={() => setActiveSection('Posts')}
-                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg  ${activeSection === 'Posts' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
+                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg cursor-pointer  ${activeSection === 'Posts' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
                         <Image src="/Images/license-draft.svg" alt="logo" width={25} height={25} />
                         Posts
                     </li>
                     <li
                         onClick={() => setActiveSection('newsletter')}
-                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg  ${activeSection === 'newsletter' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
+                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg cursor-pointer  ${activeSection === 'newsletter' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
                         <Image src="/Images/news.svg" alt="logo" width={25} height={25} />
                         newsletter
                     </li>
@@ -39,16 +54,23 @@ const Sidebar = ({ setActiveSection, activeSection }: ISlideBareProps) => {
                 <ul className="mt-5">
                     <li
                         onClick={() => setActiveSection('settings')}
-                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg  ${activeSection === 'settings' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
+                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg cursor-pointer  ${activeSection === 'settings' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
                         <Image src="/Images/settings-01.svg" alt="logo" width={25} height={25} />
                         Settings
                     </li>
                     <li
-                        onClick={() => setActiveSection('Logout')}
-                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg  ${activeSection === 'Logout' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
+                        onClick={() => setShowLogoutPopup(true)} // Ouvrir le popup de déconnexion
+                        className={`flex flex-row gap-2 items-center text-base px-4 py-3 rounded-lg cursor-pointer ${activeSection === 'Logout' ? 'bg-[#8d84821a] border border-gris6b' : ''}`}>
                         <Image src="/Images/logout-01.svg" alt="logo" width={25} height={25} />
                         Logout
                     </li>
+
+                    {showLogoutPopup && ( // Afficher le popup si showLogoutPopup est vrai
+                        <LogoutPopup
+                            onClose={() => setShowLogoutPopup(false)}
+                            onConfirm={handleLogout}
+                        />
+                    )}
                 </ul>
             </div>
         </div>

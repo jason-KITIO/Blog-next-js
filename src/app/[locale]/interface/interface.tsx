@@ -6,6 +6,7 @@ export interface IPOST {
     image: string;
     tempsLecture: number;
     content: string;
+    statut: 'Publish' | 'NotPublish';
 }
 
 export interface bash {

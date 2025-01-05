@@ -27,6 +27,7 @@ export default {
         btnYellow: '#F9D405',
         btnGreen: '#00A400',
         bgLogin: '#060416',
+        bgMenu: '#04021C',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'

@@ -6,7 +6,6 @@ import Settings from '../pages/Settings';
 import Home from '../pages/home';
 import ListPost from '../pages/listPost';
 import Newsletter from '../pages/newsletter';
-import Logout from '../pages/Logout';
 
 const Dashboard = () => {
     const [activeSection, setActiveSection] = useState('home');
@@ -14,12 +13,11 @@ const Dashboard = () => {
     return (
         <div className="flex bg-bgLogin">
             <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
-            <div className="flex-grow">
+            <div className="flex-grow pt-[12px] w-10/12">
                 {activeSection === 'home' && <Home />}
                 {activeSection === 'Posts' && <ListPost />}
                 {activeSection === 'newsletter' && <Newsletter />}
                 {activeSection === 'settings' && <Settings />}
-                {activeSection === 'Logout' && <Logout />}
             </div>
         </div>
     );

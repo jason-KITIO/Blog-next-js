@@ -12,6 +12,7 @@ import ReadingTime from '../../components/ReadingTime';
 import ViewCounter from "../../components/ViewCounter";
 import Category from "../../components/category";
 import Markdown from "../../components/markdown";
+import { Button } from "@/components/ui/button";
 
 const PostDetails = () => {
     const router = useRouter();
@@ -68,7 +69,7 @@ const PostDetails = () => {
     }
 
     return (
-        <div className="bg-violetHover">
+        <div className="bg-violetHover h-screen overflow-y-auto custom-scroll">
             <main className="px-20 py-10 pb-16 flex flex-col items-center bg-background rounded-footer">
                 <NavBar />
                 <button className="flex flex-row items-center gap-5 w-10/12 pt-1 cursor-pointer" onClick={() => handleGoBack()}>
@@ -218,6 +219,11 @@ function HelloWorld() {
                             <label htmlFor="name">Name</label>
                             <Markdown description={description} onChange={handleDescription} />
                         </div>
+                    <div className='flex justify-end w-full px-3 pb-3'>
+                        <Button className='bg-violet text-foreground font-archivo font-semibold'>
+                            POST COMMENT
+                        </Button>
+                    </div>
                     </div>
                 </div>
             </main>

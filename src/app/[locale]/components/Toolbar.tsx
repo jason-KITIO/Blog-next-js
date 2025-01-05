@@ -22,7 +22,7 @@ const Toolbar = ({ editor }: Props) => {
     }
 
     return (
-        <div id='toolbar'>
+        <div className='pl-2'>
             <Toggle
                 size="sm"
                 pressed={editor.isActive("heading")}
