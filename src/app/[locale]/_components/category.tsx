@@ -5,7 +5,7 @@ const Category = ({ id, nom, image }: ICategory) => {
     return (
         <li
             key={id}
-            className="p-2 bg-blancD9 rounded-lg cursor-pointer flex flex-row gap-2">
+            className="p-2 bg-blancD9 rounded-lg cursor-pointer flex flex-row gap-2 items-center">
             {
                 image
                 && <Image

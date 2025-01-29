@@ -12,6 +12,8 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        lgLoading: 'var(--bgLoading)',
+        bgLoading: 'var(--bgLoading)',
         blancD9: 'var(--blancD9)',
         gris6b: 'var(--gris6b)',
         gridad: 'var(--gridad)',

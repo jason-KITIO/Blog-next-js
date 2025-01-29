@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Markdown from '../../components/markdown';
+import Markdown from '../../_components/markdown';
 
 const NewPost = () => {
 
@@ -58,19 +58,19 @@ const NewPost = () => {
         <div className="flex flex-col gap-3 pt-2 h-full bg-bgMenu border-gris6b border-l border-t border-solid rounded-l-[16px] rounded-tr-[0px] rounded-br-[0px] rounded-bl-[0px]">
             <div className='flex flex-row items-center justify-between w-full pb-2 px-3 border-b border-gris6b'>
                 <div className='flex flex-row items-center gap-2 '>
-                    <Image src="/Images/home 04.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
-                    <Image src="/Images/arrow-right-01.svg" alt="logo" width={10} height={10} />
+                    <Image src="/images/home 04.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
+                    <Image src="/images/arrow-right-01.svg" alt="logo" width={10} height={10} />
                     <p className='text-gridad text-lg'>Posts</p>
-                    <Image src="/Images/arrow-right-01.svg" alt="logo" width={10} height={10} />
+                    <Image src="/images/arrow-right-01.svg" alt="logo" width={10} height={10} />
                     <p className='text-gridad text-lg'>Add Posts</p>
                 </div>
-                <Image src="/Images/settings-01.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
+                <Image src="/images/settings-01.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
             </div>
             <div className='flex flex-row justify-between px-3 items-center'>
                 <h2 className='text-xl font-bold pl-3'>Add Posts</h2>
                 <div className='flex flex-row gap-3'>
                     <div className='flex flex-row items-center p-2 border border-violet rounded-lg w-fit h-fit text-center font-archivo text-violet font-semibold cursor-pointer'>
-                        <Image src="/Images/tick-01.svg" alt="logo" width={15} height={15} />
+                        <Image src="/images/tick-01.svg" alt="logo" width={15} height={15} />
                         Publish
                     </div>
                     <div className='flex flex-row items-center p-2  bg-violet rounded-lg w-fit h-fit text-center font-archivo text-foreground font-semibold cursor-pointer'>
@@ -89,7 +89,7 @@ const NewPost = () => {
                             value={titre}
                             placeholder='Entrer le titre du post'
                             onChange={(e) => setTitre(e.target.value)}
-                            className="bg-bgLogin outline-none text-lg w-full p-4 px-5 border border-gris6b rounded-lg" />
+                            className="bg-bgLogin outline-none text-lg w-full p-4 px-5 border border-gris6b rounded-lg placeholder-red-500" />
                     </div>
                     <div>
                         <label htmlFor="categorie" className='text-lg text-grisad'>Cagetorie du posts</label>
@@ -126,7 +126,7 @@ const NewPost = () => {
                             className={`w-[500px] h-[145px] border-dashed border border-[rgba(255,255,255,0.15)] rounded-[12px] flex items-center justify-center cursor-pointer ${isDragOver ? 'bg-red-500' : 'bg-[rgba(0,0,0,0.3)]'}`}
                         >
                             {file ? (
-                                <Image src={URL.createObjectURL(file)} alt="Aperçu" className="w-full h-full object-contain rounded-[12px] " />
+                                <Image src={URL.createObjectURL(file)} alt="Aperçu" className="w-full h-full object-contain rounded-[12px]" width={500} height={145} />
                             ) : (
                                 <span className="text-white">Glissez-déposez une image ou cliquez pour sélectionner</span>
                             )}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import AddPost from '../components/AddPost';
+import AddPost from '../_components/AddPost';
 import NewPost from './NewPost';
 
 const ListPost = () => {
@@ -14,11 +14,11 @@ const ListPost = () => {
                 <div className="flex flex-col pt-2 h-full bg-bgMenu border-gris6b border-l border-t border-solid rounded-l-[16px] rounded-tr-[0px] rounded-br-[0px] rounded-bl-[0px] ">
                     <div className='flex flex-row items-center justify-between w-full pb-2 px-3 border-b border-gris6b'>
                         <div className='flex flex-row items-center gap-2 '>
-                            <Image src="/Images/home 04.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
-                            <Image src="/Images/arrow-right-01.svg" alt="logo" width={10} height={10} />
+                            <Image src="/images/home 04.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
+                            <Image src="/images/arrow-right-01.svg" alt="logo" width={10} height={10} />
                             <p className='text-gridad text-lg'>Posts</p>
                         </div>
-                        <Image src="/Images/settings-01.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
+                        <Image src="/images/settings-01.svg" alt="logo" width={10} height={10} className='cursor-pointer' />
                     </div>
                     <div className='flex flex-col gap-3 pt-3 overflow-y-auto h-[82vh] custom-scroll'>
                         <h2 className='text-xl font-bold pl-3'>List of posts</h2>
@@ -36,14 +36,14 @@ const ListPost = () => {
                             </div>
                             <div className='flex flex-row gap-3'>
                                 <div className='flex flex-row items-center p-2 border border-violet rounded-lg w-fit h-fit text-center font-archivo text-violet font-semibold cursor-pointer'>
-                                    <Image src="/Images/filter-mail-circle.svg" alt="logo" width={15} height={15} />
+                                    <Image src="/images/filter-mail-circle.svg" alt="logo" width={15} height={15} />
                                     Filter
                                 </div>
                                 <div
                                     onClick={() => setIsAddingPost(true)}
                                     className='flex flex-row items-center p-2 border border-violet rounded-lg w-fit h-fit text-center font-archivo text-violet font-semibold cursor-pointer'
                                 >
-                                    <Image src="/Images/add-circle1.svg" alt="logo" width={15} height={15} />
+                                    <Image src="/images/add-circle1.svg" alt="logo" width={15} height={15} />
                                     Add posts
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ const ListPost = () => {
                     <div className='flex items-end justify-center w-full h-[9vh] font-Archivo'>
                         <div className='flex flex-row items-center gap-2 bg-[#7066C120] px-3 py-2 rounded-t-[16px] cursor-pointer'>
                             <div className='flex items-center justify-center w-10 h-10 bg-[#ffffff12] rounded-3xl'>
-                                <Image src="/Images/arrow-left.svg" alt="logo" width={15} height={15} />
+                                <Image src="/images/arrow-left.svg" alt="logo" width={15} height={15} />
                             </div>
                             <p className='text-[#ffffff64]'>1</p>
                             <p className='text-[#ffffff64]'>2</p>
@@ -127,7 +127,7 @@ const ListPost = () => {
                             <p className='text-[#ffffff64]'>9</p>
                             <p className='text-[#ffffff64]'>...</p>
                             <div className='flex items-center justify-center w-10 h-10 bg-[#ffffff12] rounded-3xl'>
-                                <Image src="/Images/arrow-right.svg" alt="logo" width={10} height={10} />
+                                <Image src="/images/arrow-right.svg" alt="logo" width={10} height={10} />
                             </div>
                         </div>
                     </div>

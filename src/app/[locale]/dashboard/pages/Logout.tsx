@@ -14,7 +14,7 @@ const LogoutPopup: React.FC<LogoutPopupProps> = ({ onClose, onConfirm }) => {
             <div className="bg-[#060416] rounded-lg p-6 shadow-lg border border-[#FFFFFF15] flex flex-col gap-3 p-10">
                 <div className='flex flex-row justify-between mb-4'>
                     <h2 className="text-lg font-bold font-archivoBlack">Logout</h2>
-                    <Image src="/Images/cancel-circle-half-dot.svg" alt='close' width={20} height={20} onClick={onClose} className='cursor-pointer'/>
+                    <Image src="/images/cancel-circle-half-dot.svg" alt='close' width={20} height={20} onClick={onClose} className='cursor-pointer'/>
                 </div>
                 <p>Do you really want to log out?</p>
                 <div className="mt-4 flex justify-between">
