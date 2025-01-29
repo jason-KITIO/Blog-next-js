@@ -15,6 +15,7 @@ const Post: React.FC<IPOST> = ({ id, DateCreation, Titre, SousTitre, tempsLectur
             className="flex gap-y-2 flex-col hover:bg-violetHover hover:rounded-lg hover:p-5 hover:transition-all hover:duration-200 hover:delay-75 hover:ease-in-out cursor-pointer text-left"
             key={id}
         >
+            {/* <Image src={image} alt={Titre} width={100} height={100}/> */}
             <p className="text-gris6b font-archivo text-[16px]">{DateCreation}</p>
             <p className="font-semibold text-xl">{Titre}</p>
             <p className="text-gridad text-lg">{SousTitre}</p>

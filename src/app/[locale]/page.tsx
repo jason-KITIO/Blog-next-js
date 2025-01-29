@@ -1,15 +1,15 @@
 'use client';
 
 import Image from "next/image";
-import NavBar from './components/navbar'
-import Post from "./components/post";
+import NavBar from './_components/navbar'
+import Post from "./_components/post";
 import React from "react";
-import Category from "./components/category";
+import Category from "./_components/category";
 import UseGetPost from "./utils/useGetPosts";
 import UseGetCategory from "./utils/useGetCategory";
-
 import { useTranslations } from 'next-intl';
-import Footer from "./components/footer";
+import Footer from "./_components/footer";
+
 // import { useI18n } from './utils/useTranslations';
 
 const Home: React.FC = () => {
@@ -26,9 +26,11 @@ const Home: React.FC = () => {
     </div>);
 
   return (
-    <div className="bg-violetHover h-screen overflow-y-auto custom-scroll">
+    <div className="bg-violetHover">
+
+      {/* <div className="bg-violetHover h-screen overflow-y-auto custom-scroll"> */}
       <main className="px-20 py-10 pb-16 flex flex-col items-center bg-background rounded-footer">
-        <div className="absolute w-[192px] h-[1129.52px] left-[0px] top-[-500.08px] bg-gradient-to-b from-[#E3FAFF] to-transparent opacity-30 blur-[40px] rotate-[-54.38deg]">
+        <div className="absolute w-[192px] h-[1129.52px] left-[0px] top-[-500.08px] bg-gradient-to-b from-[#E3FAFF] to-transparent opacity-100 blur-[40px] rotate-[-54.38deg]">
         </div>
         <NavBar />
         <div className="bg-Intersect bg-contain bg-center bg-no-repeat h-screen flex justify-center items-center flex-col">
@@ -43,44 +45,48 @@ const Home: React.FC = () => {
             {t('sousTitre')}
           </p>
         </div>
-        <div className="relative top-[-100px] flex flex-row gap-x-8 justify-center">
+        <div className="relative top-[-100px] flex flex-row gap-x-5 justify-center">
           <div className="w-7/12">
             <p className="text-2xl font-bold">Derniers posts</p>
-            <div className="flex flex-row flex-wrap gap-y-10 pt-5">
-              {posts.map(post => (
+            <div className="flex flex-col gap-y-10 gap-x-5 pt-5">
+              <div className="flex flex-row flex-wrap gap-y-10 gap-x-5 pt-5">
+                {posts.map(post => (
+                  <Post
+                    id={post.id}
+                    key={post.id}
+                    DateCreation={post.DateCreation}
+                    Titre={post.Titre}
+                    SousTitre={post.SousTitre}
+                    image={post.image}
+                    tempsLecture={post.tempsLecture}
+                    content=""
+                    statut="Publish"
+                  />
+                ))}
+              </div>
+              <p className="text-2xl font-bold">Posts populaires</p>
+              <div className="flex flex-row flex-wrap gap-y-10 gap-x-5 pt-5">
                 <Post
-                  id={post.id}
-                  key={post.id}
-                  DateCreation={post.DateCreation}
-                  Titre={post.Titre}
-                  SousTitre={post.SousTitre}
-                  image={post.image}
-                  tempsLecture={post.tempsLecture}
+                  id={1}
+                  DateCreation={"Nov 2024"}
+                  Titre="Front-end vs Back-end : Quelle voie choisir pour ta carrière ?"
+                  SousTitre="Plonge dans les différences entre le développement Front-end et Back-end pour mieux comprendre leur rôle et choisir celui qui correspond à ton profil."
+                  image="/images/download 1.png"
+                  tempsLecture={8}
                   content=""
                   statut="Publish"
                 />
-              ))}
-              <p className="text-2xl font-bold">Posts populaires</p>
-              <Post
-                id={1}
-                DateCreation={"Nov 2024"}
-                Titre="Front-end vs Back-end : Quelle voie choisir pour ta carrière ?"
-                SousTitre="Plonge dans les différences entre le développement Front-end et Back-end pour mieux comprendre leur rôle et choisir celui qui correspond à ton profil."
-                image="/images/direction-right.svg"
-                tempsLecture={8}
-                content=""
-                statut="Publish"
-              />
-              <Post
-                id={1}
-                DateCreation={"Nov 2024"}
-                Titre="Front-end vs Back-end : Quelle voie choisir pour ta carrière ?"
-                SousTitre="Plonge dans les différences entre le développement Front-end et Back-end pour mieux comprendre leur rôle et choisir celui qui correspond à ton profil."
-                image="/images/direction-right.svg"
-                tempsLecture={8}
-                content=""
-                statut="Publish"
-              />
+                <Post
+                  id={1}
+                  DateCreation={"Nov 2024"}
+                  Titre="Front-end vs Back-end : Quelle voie choisir pour ta carrière ?"
+                  SousTitre="Plonge dans les différences entre le développement Front-end et Back-end pour mieux comprendre leur rôle et choisir celui qui correspond à ton profil."
+                  image="/images/download 1.png"
+                  tempsLecture={8}
+                  content=""
+                  statut="Publish"
+                />
+              </div>
             </div>
           </div>
           <div className="w-3/12">

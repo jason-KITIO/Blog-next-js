@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react';
-import Sidebar from '../components/slideBar';
+import Sidebar from '../_components/slideBar';
 import Settings from '../pages/Settings';
 import Home from '../pages/home';
 import ListPost from '../pages/listPost';

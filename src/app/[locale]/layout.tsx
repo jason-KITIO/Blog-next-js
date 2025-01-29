@@ -6,6 +6,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { ThemeProvider } from "@/components/theme-provider";
+// import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,21 +42,21 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>; // Modification ici
 }) {
-  
+
   // Résoudre la promesse pour obtenir les paramètres
   const resolvedParams = await params;
   const locale = resolvedParams.locale;
 
-  // Ensure that the incoming `locale` is valid
+  // Assurez-vous que la locale est valide
   if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
-  
-  // Providing all messages to the client side is the easiest way to get started
+
+  // Fournir tous les messages au client
   const messages = await getMessages();
- 
+
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`
           ${archivo.variable} 
@@ -63,9 +65,16 @@ export default async function RootLayout({
           ${alexandria.variable}
           antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
