@@ -4,7 +4,7 @@ import { createComment, getComments, deleteComment } from '../controllers/commen
 const router = express.Router();
 
 // Route to add a new comment
-router.post('/add', createComment);
+router.post('/', createComment);
 
 // Route to get all comments
 router.get('/', getComments);

@@ -1,15 +1,16 @@
 import { PrismaClient } from '@prisma/client';
 import { Response, Request } from 'express';
+import { ICATEGORY } from '../schema/categorySchema';
 
 const prisma = new PrismaClient();
 
 export const createCategory = async (req: Request, res: Response) => {
     try{
-        const {categoryName, urlImage} = req.body;
+        const categoryData: ICATEGORY = req.body;
         const newCategory = await prisma.category.create({
             data: {
-                categoryName,
-                urlImage,
+                categoryName: categoryData.categoryName,
+                image: categoryData.image,
             }
         });
         res.status(201).json(newCategory);
@@ -44,14 +45,14 @@ export const getCategory = async (req: Request, res: Response) => {
 export const updateCategory = async (req: Request, res: Response) => {
     try{
         const {id} = req.params;
-        const {categoryName, urlImage} = req.body;
+        const categoryData: ICATEGORY = req.body;
         const updatedCategory = await prisma.category.update({
             where: {
                 id: id
             },
             data: {
-                categoryName,
-                urlImage
+                categoryName: categoryData.categoryName,
+                image: categoryData.image
             }
         });
         res.status(200).json(updatedCategory);

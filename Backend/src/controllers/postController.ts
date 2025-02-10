@@ -1,26 +1,30 @@
-import { PrismaClient } from '@prisma/client';
-import { Response, Request } from 'express';
+import { PrismaClient} from '@prisma/client';
+import { Request, Response } from 'express';
+import { IPOST } from '../schema/blogSchema';
 
 const prisma = new PrismaClient();
 
 export const createPost = async (req: Request, res: Response) => {
-  try {
-    const { title, content, imageID, categoryID } = req.body;
-    const newPost = await prisma.post.create({
-      data: {
-        title,
-        content,
-        imageID,
-        categoryID,
-        createdAt: new Date(), // Date.now()
-      },
-    });
-    res.status(201).json(newPost);
-  } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
-      }
-  };
-
+ 
+    try {
+      
+        const postData: IPOST = req.body;
+        const newPost = await prisma.post.create({
+            data: {
+                title: postData.title,
+                content: postData.content,
+                image: postData.image,
+                categoryID: postData.categoryID,
+                status: postData.status,
+                views: postData.views || 0,
+                createdAt:  postData.createdAt || new Date()               
+            },
+        });
+        res.status(201).json(newPost);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+};
 
 export const getPosts = async (req: Request, res: Response) => {
   try {
@@ -48,16 +52,18 @@ export const getPost = async (req: Request, res: Response) => {
 export const updatePost = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const { title, content, imageID, categoryID } = req.body;
+        const postData: IPOST = req.body;
+       // const { title, content, imageID, categoryID } = req.body;
         const updatedPost = await prisma.post.update({
         where: {
             id: id,
         },
         data: {
-            title,
-            content,
-            imageID,
-            categoryID,
+            title: postData.title,
+            content: postData.content,
+            image: postData.image,
+            categoryID: postData.categoryID,
+            createdAt: new Date(),
         },
         });
         res.status(200).json(updatedPost);
