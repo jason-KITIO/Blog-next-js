@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PrismaClient } from '@prisma/client';
 import { Response, Request } from 'express';
 import { ICATEGORY } from '../schema/categorySchema';

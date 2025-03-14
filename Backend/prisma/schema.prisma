@@ -12,9 +12,8 @@ model Author {
   pseudo       String
   email        String     @unique
   password     String
-  links        SocialLinks?
-  postCreated  Post       @relation(fields: [postID], references: [id])
-  postID       String     @db.ObjectId 
+  links        String[]
+  posts        Post[]
 }
 
 
@@ -27,7 +26,8 @@ model Post{
    createdAt    DateTime  @default(now())
    updatedAt    DateTime  @updatedAt
    status       StatusValue?
-   Author       Author[]
+   author       Author?      @relation(fields: [authorID], references: [id])
+   authorID     String     @db.ObjectId 
    Comment      Comment[]
    categoryID   String[]   @db.ObjectId
    category     Category[] @relation(fields: [categoryID], references: [id])
@@ -44,15 +44,6 @@ model Comment {
     postID        String   @db.ObjectId  
 }
 
-
-// model Image{
-//     id          String      @id @default(auto()) @map("_id") @db.ObjectId
-//     url         String      @unique
-//     postID      String[]    @db.ObjectId
-//     post        Post[]      @relation(fields: [postID], references: [id])
-//     Category    Category[]
-// }
-
 model Category{
     id           String     @id @default(auto()) @map("_id") @db.ObjectId
     categoryName String     @unique
@@ -61,11 +52,7 @@ model Category{
     post         Post[]     @relation(fields: [postID], references: [id])
 }
 
-enum SocialLinks {
-    github
-    linkedin
-    x
-}
+
 
 enum StatusValue {
     publish

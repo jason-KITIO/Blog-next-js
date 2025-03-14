@@ -2,9 +2,12 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
+import crypto from 'crypto';
 import categoryRoutes from './routes/categoryRoutes';
 import postRoutes from './routes/postRoutes';
 import commentRoutes from './routes/commentRoutes';
+import registerRoutes from './routes/registerRoutes';
+import LoginRoutes from './routes/loginRoutes'
 
 
 //configuration des variables d'environement
@@ -20,10 +23,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+
 //configuration des routes
 app.use('/api/category', categoryRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/registration', registerRoutes);
+app.use('/api/login', LoginRoutes);
+
 
 //demarrage du serveur
 app.listen(PORT,()=>{
